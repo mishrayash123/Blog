@@ -13,7 +13,7 @@ dotenv.config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Removed trailing slash
+    origin: "https://blog-theta-wine-88.vercel.app", // Removed trailing slash
     credentials: true, // Allow credentials (cookies) to be sent if needed
     exposedHeaders:["set-cookie"]
   })
