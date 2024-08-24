@@ -15,6 +15,7 @@ app.use(
   cors({
     origin: "http://localhost:5173", // Removed trailing slash
     credentials: true, // Allow credentials (cookies) to be sent if needed
+    exposedHeaders:["set-cookie"]
   })
 );
 
