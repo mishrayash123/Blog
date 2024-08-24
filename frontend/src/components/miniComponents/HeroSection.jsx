@@ -10,7 +10,7 @@ const HeroSection = () => {
       {blogs && blogs.length > 0 ? (
         blogs.slice(0, 2).map((element) => {
           return (
-            <Link to={`/blog/${element._id}`} className="card" key={element._id}>
+            <Link to={`/blog/${element._id}`} className="card" key={element._id} style={{"cursor":"pointer"}}>
               <img src={element.mainImage.url} alt="blog" className="blogImg" />
               <div className="category">{element.category}</div>
               <h1>{element.title}</h1>
