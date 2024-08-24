@@ -22,9 +22,10 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/user/myprofile",
+          "https://blog-8o84.onrender.com/api/v1/user/myprofile",
           {
             withCredentials: true,
+            params: {token:localStorage.getItem("token")},
           }
         );
         setUser(data.user);
@@ -38,8 +39,11 @@ const App = () => {
     const fetchBlogs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/blog/all",
-          { withCredentials: true }
+          "https://blog-8o84.onrender.com/api/v1/blog/all",
+          {
+            withCredentials: true,
+            params: {token:localStorage.getItem("token")},
+          }
         );
         setBlogs(data.allBlogs);
       } catch (error) {

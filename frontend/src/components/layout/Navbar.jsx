@@ -14,24 +14,13 @@ const Navbar = () => {
     setShow(!show);
   };
   
-  const isDashboard = useLocation("http://localhost:5173/dashboard");
+  const isDashboard = useLocation("https://blog-theta-wine-88.vercel.app/dashboard");
   
   const { mode, setMode, isAuthenticated, user, setIsAuthenticated } = useContext(Context);
   
   const navigateTo = useNavigate();
   const handleLogout = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/logout",
-        { withCredentials: true }
-      );
-      setIsAuthenticated(false);
-      toast.success(data.message);
-      navigateTo("/");
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
+    localStorage.removeItem("token")
   };
 
   return (

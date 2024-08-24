@@ -10,8 +10,11 @@ const MyBlogs = () => {
   useEffect(() => {
     const fetchMyBlogs = async () => {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/blog/myblogs",
-        { withCredentials: true }
+        "https://blog-8o84.onrender.com/api/v1/blog/myblogs",
+        {
+          withCredentials: true,
+          params: {token:localStorage.getItem("token")},
+        }
       );
       setMyBlogs(data.blogs);
     };
@@ -20,8 +23,9 @@ const MyBlogs = () => {
 
   const deleteBlogHandler = async (id) => {
     await axios
-      .delete(`http://localhost:4000/api/v1/blog/delete/${id}`, {
+      .delete(`https://blog-8o84.onrender.com/api/v1/blog/delete/${id}`, {
         withCredentials: true,
+        params: {token:localStorage.getItem("token")},
       })
       .then((res) => {
         toast.success(res.data.message);

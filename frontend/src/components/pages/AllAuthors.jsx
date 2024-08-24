@@ -9,8 +9,11 @@ const AllAuthors = () => {
   useEffect(() => {
     const fetchAuthors = async () => {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/authors",
-        { withCredentials: true }
+        "https://blog-8o84.onrender.com/api/v1/user/authors",
+        {
+          withCredentials: true,
+          params: {token:localStorage.getItem("token")},
+        }
       );
       setAuthors(data.authors);
     };

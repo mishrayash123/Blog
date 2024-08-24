@@ -97,10 +97,11 @@ const CreateBlog = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/blog/post",
+        "https://blog-8o84.onrender.com/api/v1/blog/post",
         formData,
         {
-          withCredentials: true,
+            withCredentials: true,
+            params: {token:localStorage.getItem("token")},
           headers: { "Content-Type": "multipart/form-data" },
         }
       );

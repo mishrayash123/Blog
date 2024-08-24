@@ -15,15 +15,17 @@ const Login = () => {
     e.preventDefault();
     await axios
       .post(
-        "http://localhost:4000/api/v1/user/login",
+        "https://blog-8o84.onrender.com/api/v1/user/login",
         { email, password, role },
         {
-          withCredentials: true,
+            withCredentials: true,
+            params: {token:localStorage.getItem("token")},
           headers: { "Content-Type": "application/json" },
         }
       )
       .then((res) => {
         toast.success(res.data.message);
+        localStorage.setItem("token",res.data.token)
         setEmail("");
         setPassword("");
         setRole("");

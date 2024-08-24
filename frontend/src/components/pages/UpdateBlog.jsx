@@ -29,8 +29,11 @@ const UpdateBlog = () => {
     const fetchBlog = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:4000/api/v1/blog/singleblog/${id}`,
-          { withCredentials: true }
+          `https://blog-8o84.onrender.com/api/v1/blog/singleblog/${id}`,
+          {
+            withCredentials: true,
+            params: {token:localStorage.getItem("token")},
+          }
         );
         setTitle(data.blog.title);
         setIntro(data.blog.intro);
@@ -105,9 +108,12 @@ const UpdateBlog = () => {
 
     try {
       const { data } = await axios.put(
-        `http://localhost:4000/api/v1/blog/update/${id}`,
+        `https://blog-8o84.onrender.com/api/v1/blog/update/${id}`,
         updatedBlog,
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          params: {token:localStorage.getItem("token")},
+        }
       );
       toast.success(data.message);
     } catch (error) {
